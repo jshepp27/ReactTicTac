@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { directive } from '@babel/types';
 
 function Square(props) {
         return (
@@ -47,12 +48,13 @@ class Board extends React.Component {
         const winner = calculateWinner(this.state.squares);
         let status;
         if (winner) {
-            status = 'Winner'+ winner;
+            status = winner + ' is the Chicken Dinner!';
         } else {
-            status = 'Next player' + (this.state.xIsNext ? 'X' : 'O');
-        }
+            status = 'Next player is ' + (this.state.xIsNext ? 'X' : 'O');
+        };
 
         return (
+        
         <div>
           <div className="board-row">
             {this.renderSquare(0)}
@@ -68,6 +70,9 @@ class Board extends React.Component {
             {this.renderSquare(6)}
             {this.renderSquare(7)}
             {this.renderSquare(8)}
+          </div>
+          <div className="result">
+              <h1>{status}</h1>
           </div>
         </div>
       );
